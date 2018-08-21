@@ -15,6 +15,11 @@ import java.util.Date;
 public class LoginController {
 	private UserService userService;
 
+	@Autowired
+	public void setUserService(UserService userService) {
+		this.userService = userService;
+	}
+
 	@RequestMapping({"/", "/index"})
 	public ModelAndView loginPage() {
 		return new ModelAndView("login");
@@ -39,10 +44,5 @@ public class LoginController {
 			request.getSession().setAttribute("user", user);
 			return new ModelAndView("main");
 		}
-	}
-
-	@Autowired
-	public void setUserService(UserService userService) {
-		this.userService = userService;
 	}
 }
